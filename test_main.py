@@ -1,26 +1,32 @@
 import unittest
-from main import input_into_entry
-point_count = 0
+import main
+
+
 class Testinput_into_entry(unittest.TestCase):
 
-    def test_input(self):
-        if 1 == '0' or 1 == '':
-            print(1)
-        else:
-            print(1)
+    # substraction check
+        def test_minus(self):
+            main.operand1 = '-'
+            self.assertTrue(float(main.equal) > 0)
 
-    def test_input_point(self):
-        global point_count
-        if point_count == 0 and '' == '':
-            point_count = point_count + 1
-            print('0' + '.')
-        elif point_count == 0:
-            point_count = point_count + 1
-            print('.')
+    # division by zero
+        def test_one(self):
+            main.operand1 = '/'
+            self.assertTrue((main.equal) == '∞')
 
-    def test_plus_minus(self):
-        if 1 != '0':
-            if float(1) > 0:
-                print(str('-' + '1'))
-            else:
-                print(1)
+    # multiplication of a negative number
+        def test_multiplication_one_minus(self):
+            main.operand1 = '*'
+            self.assertTrue(float(main.equal) < 0)
+
+    # multiplication of two negative numbers
+
+        def test_multiplication_two_minus(self):
+            main.operand1 = '*'
+            self.assertTrue(float(main.equal) > 0)
+
+    # check output after division
+        def test_float_division(self):
+            main.operand1 = '/'
+            self.assertTrue(main.equal % 1 > 0)
+
